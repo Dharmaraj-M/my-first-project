@@ -1,3 +1,9 @@
 <app-login (dataDisplay) = "dataDisplay($event)"></app-login>
 
-<h2>{{ data }}</h2>
+<div *ngIf = "data == 'Success'; else failBlock">
+    <h2 [ngStyle]="{'color':'green'}">{{ data }}</h2>
+</div>
+
+<ng-template #failBlock>
+    <h2 [ngStyle]="{'color':'red'}">{{ data }}</h2>
+</ng-template>

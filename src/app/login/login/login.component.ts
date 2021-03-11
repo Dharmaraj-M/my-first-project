@@ -17,15 +17,21 @@ export class LoginComponent implements OnInit {
   @Output() dataDisplay:EventEmitter<any> = new EventEmitter<any>();
   inputValidate(): void {
     // console.log(this.username + " " + this.password);
-    if (!(this.username == "" && this.password == "")) {
-      if(this.username.match(/\d/) == null) {
-        if(this.password.length > 5) {    
-          this.dataDisplay.emit("Success");
-        }
-      }
-    }
-    else {
+    let flag:number = 1;
+    if (this.username == "" || this.password == "") {
+      flag = 0;
       this.dataDisplay.emit("Fail");
+    }
+    if(this.username.match(/\d/) != null) {
+      flag = 0;
+      this.dataDisplay.emit("Fail");
+    }
+    if(this.password.length <= 5) {
+      flag = 0;
+      this.dataDisplay.emit("Fail");
+    }
+    if(flag == 1) {
+      this.dataDisplay.emit("Success");
     }
   }
 }

@@ -10,6 +10,6 @@ export class AppComponent {
   data: string = ''
   dataDisplay(data: any) {
     // console.log(data);
-    this.data = data; 
+    this.data = data;
   }
 }
