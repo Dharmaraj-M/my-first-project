@@ -1,9 +1,17 @@
-<app-login (dataDisplay) = "dataDisplay($event)"></app-login>
-
-<div *ngIf = "data == 'Success'; else failBlock">
-    <h2 [ngStyle]="{'color':'green'}">{{ data }}</h2>
+<app-login (dataDisplay)="dataDisplay($event)"></app-login>
+<br>
+<div style="margin: auto; width: 25%;">
+    <mat-card>
+        <mat-card-header></mat-card-header>
+        <mat-card-content>
+            <div style="text-align: center;">
+                <div *ngIf="data == 'Success'; else failBlock">
+                    <h2 [ngStyle]="{'color':'green'}">{{ data }}</h2>
+                </div>
+                <ng-template #failBlock>
+                    <h2 [ngStyle]="{'color':'red'}">{{ data }}</h2>
+                </ng-template>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>
-
-<ng-template #failBlock>
-    <h2 [ngStyle]="{'color':'red'}">{{ data }}</h2>
-</ng-template>
